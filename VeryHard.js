@@ -1,17 +1,15 @@
-function coinChange(coins, amount) {
-    const store = Array(amount + 1).fill(Infinity);
-    store[0] = 0;
-  
-    for (let i = 1; i <= amount; i++) {
-      for (const coin of coins) {
-        if (i - coin >= 0) {
-          store[i] = Math.min(store[i], store[i - coin] + 1);
-        }
-      }
+
+function coins(coins, amount) {
+
+    let table = [amount+1];
+    for(let i = 0; i < amount + 1; i++) { //account for if the amount is 0 
+        table[i] = 0;
     }
-    return store[amount] === Infinity ? - 1 : store[amount];
-  }
+     
+    for (let i = 1; i <= amount; i++) { //initialize elements to max value representable in JS
+        table[i] = Number.MAX_VALUE;
+    }
 
-  console.log(coinChange([2], 3));
+}
 
-
+//This is as far as I could go :( 
